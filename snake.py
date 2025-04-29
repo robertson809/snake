@@ -10,13 +10,14 @@ board_length = 16
 snake_len = 3
 
 motif_selector = randrange(0,10)
-cutoff = 9
+cutoff = 8
 avatar = '🐍' if motif_selector > cutoff else '👱🏻‍♀️'
 food_emoji_list = ['🐥','🐣','🪺','🍄','🐁','🐭','🐀','🐸','🦎'] if motif_selector > cutoff else ['🍦', '💯', '💞', '💆🏻‍♀️','🥥','💄','👗','💅🏼','💋','👸🏼'] 
 food_emoji = food_emoji_list[randrange(0,len(food_emoji_list))]
 wall_emoji_1 = '🔥' if motif_selector > cutoff else '🌸'
 wall_emoji_2 = '👹' if motif_selector > cutoff else '🎀'
 title_card_file_name = 'snake_title_card.txt' if motif_selector > cutoff else 'barbie_title_card.txt'
+pause_enabled = True if input("Would you like to play with pause enabled? (y/n) -> return") == 'y' else False
 
 # starting settings
 full_snake_pos = [(5,5)]
@@ -34,6 +35,12 @@ def read_input(cur_direction, seconds=.2):
 
     if user_input:
         user_input = sys.stdin.read(1)[0]
+        if user_input == 'p' and pause_enabled:
+            unpause_character = 'x'
+            while unpause_character != 'p':
+                user_input, _, __ = select.select( [sys.stdin], [], [], seconds)
+                unpause_character = sys.stdin.read(1)[0]
+                return read_input(cur_direction)
         if user_input in letter_to_change_vector:
             direction = letter_to_change_vector[user_input]
             
