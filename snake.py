@@ -22,7 +22,8 @@ food_emoji = food_emoji_list[randrange(0,len(food_emoji_list))]
 wall_emoji_1 = '🔥' if motif_selector > cutoff else '🌸'
 wall_emoji_2 = '👹' if motif_selector > cutoff else '🎀'
 title_card_file_name = 'snake_title_card.txt' if motif_selector > cutoff else 'barbie_title_card.txt'
-pause_enabled = True if input("Would you like to play with pause enabled? (y/n) -> return") == 'y' else False
+# pause_enabled = True if input("Would you like to play with pause enabled? (y/n) -> return") == 'y' else False
+pause_enabled = True
 
 # starting settings
 full_snake_pos = [(5,5)]
