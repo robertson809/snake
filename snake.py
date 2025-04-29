@@ -9,8 +9,8 @@ letter_to_change_vector = {'a':(-1,0),'d':(1,0),'s':(0,1),'w':(0,-1)}
 # game settings
 board_width = 16
 board_length = 16
-board_length = input("Choose the length (enter a number)")
-board_width = input("Choose the length (enter a number)")
+board_length = int(input("Choose the length (enter a number)"))
+board_width = int(input("Choose the length (enter a number)"))
 
 snake_len = 3
 
