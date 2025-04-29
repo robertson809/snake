@@ -10,11 +10,13 @@ board_length = 16
 snake_len = 3
 
 motif_selector = randrange(0,10)
-avatar = '🐍' if motif_selector > 1 else '👱🏻‍♀️'
-food_emoji_list = ['🐥','🐣','🪺','🍄','🐁','🐭','🐀','🐸','🦎'] if motif_selector > 1 else ['🍦', '💯', '💞', '💆🏻‍♀️','🥥','💄','👗','💅🏼','💋','👸🏼'] 
+cutoff = 9
+avatar = '🐍' if motif_selector > cutoff else '👱🏻‍♀️'
+food_emoji_list = ['🐥','🐣','🪺','🍄','🐁','🐭','🐀','🐸','🦎'] if motif_selector > cutoff else ['🍦', '💯', '💞', '💆🏻‍♀️','🥥','💄','👗','💅🏼','💋','👸🏼'] 
 food_emoji = food_emoji_list[randrange(0,len(food_emoji_list))]
-wall_emoji_1 = '🔥' if motif_selector > 1 else '🌸'
-wall_emoji_2 = '👹' if motif_selector > 1 else '🎀'
+wall_emoji_1 = '🔥' if motif_selector > cutoff else '🌸'
+wall_emoji_2 = '👹' if motif_selector > cutoff else '🎀'
+title_card_file_name = 'snake_title_card.txt' if motif_selector > cutoff else 'barbie_title_card.txt'
 
 # starting settings
 full_snake_pos = [(5,5)]
@@ -70,7 +72,7 @@ def update_position(direction, positions, head, snake_len):
 def print_board(full_snake_pos, food_position):
     for i in range(10):
         print()
-    with open ("aux/title_card.txt", 'r') as title_card:
+    with open (f"aux/{title_card_file_name}", 'r') as title_card:
         content = title_card.read()
         print(content)
         print()
