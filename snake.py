@@ -4,9 +4,14 @@ from itertools import product
 
 letter_to_change_vector = {'a':(-1,0),'d':(1,0),'s':(0,1),'w':(0,-1)}
 
+
+
 # game settings
 board_width = 16
 board_length = 16
+board_length = input("Choose the length (enter a number)")
+board_width = input("Choose the length (enter a number)")
+
 snake_len = 3
 
 motif_selector = randrange(0,10)
