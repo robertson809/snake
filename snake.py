@@ -11,7 +11,7 @@ class game:
     board_length = 16
     snake_len = 3
     motif_selector = randrange(2)
-    cutoff = 2
+    cutoff = 0
     
     avatar_counter = 0
     barbie_avatars = ['👩🏼‍⚕️','👱🏻‍♀️','👩🏼‍🎓','👩🏼‍🏫','👩🏼‍🍳','👩🏻‍🔬','👩🏻‍✈️','👮🏼‍♀️']
@@ -49,7 +49,7 @@ class game:
     
     current_snake_emojis = ['🐍'] * snake_len if motif_selector > cutoff else barbie_avatars[:snake_len]
     full_avatar_list = ['🐍'] if motif_selector > cutoff else barbie_avatars
-    next_avatar_position = snake_len
+    next_avatar_position = snake_len % len(full_avatar_list)
 
     full_snake_pos = [(5,5)]
     free_positions = set([ele for ele in product(range(1,board_width), range(1,board_length))])
